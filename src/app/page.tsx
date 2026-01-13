@@ -4,6 +4,8 @@ import { CourseGrid } from "@/components/course-grid";
 import { Footer } from "@/components/footer";
 import { Testimonials } from "@/components/testimonials";
 import { Stats } from "@/components/stats";
+import { LearningPaths } from "@/components/learning-paths";
+import { ToolsGrid } from "@/components/tools-grid";
 import { CTA } from "@/components/cta";
 import { FAQ } from "@/components/faq";
 import { Features } from "@/components/features";
@@ -15,6 +17,8 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Stats />
+        <LearningPaths />
+        <ToolsGrid />
         <Features />
         <CourseGrid />
         <Testimonials />
