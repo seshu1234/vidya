@@ -8,7 +8,7 @@ const testimonials = [
     role: "SSC Aspirant • Bihar",
     content: "Pehli baar coding samajh aayi! Grocery store wali analogy ne loops clear kar diya 🙌",
     initials: "R",
-    color: "bg-orange-100 text-orange-700"
+    color: "bg-slate-100 text-slate-700"
   },
   {
     name: "Priya M.",

@@ -3,22 +3,22 @@ import { BookOpen, Users, Trophy, Zap } from "lucide-react";
 
 const features = [
     {
-        icon: <BookOpen className="h-8 w-8 text-saffron-500" />,
+        icon: <BookOpen className="h-8 w-8 text-black dark:text-white" />,
         title: "100% Hinglish",
         description: "No more language barrier. Learn logic, not just syntax, in the language you think in."
     },
     {
-        icon: <Trophy className="h-8 w-8 text-yellow-500" />,
+        icon: <Trophy className="h-8 w-8 text-black dark:text-white" />,
         title: "Gamified Learning",
         description: "Earn XP, maintain streaks, and climb the leaderboard. Learning is now a game."
     },
     {
-        icon: <Users className="h-8 w-8 text-blue-500" />,
+        icon: <Users className="h-8 w-8 text-black dark:text-white" />,
         title: "Community First",
         description: "Join 50k+ students. Ask doubts, share notes, and grow together."
     },
     {
-        icon: <Zap className="h-8 w-8 text-purple-500" />,
+        icon: <Zap className="h-8 w-8 text-black dark:text-white" />,
         title: "Job Ready",
         description: "Curriculum designed for real jobs in Indian tech startups and MNCs."
     }

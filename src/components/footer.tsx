@@ -11,27 +11,33 @@ export function Footer() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:gap-12 lg:gap-16">
-          <div className="flex flex-col space-y-3">
-            <h4 className="font-semibold tracking-tight text-navy-900 dark:text-white">Learn</h4>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Python Basics</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">AI Fundamentals</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">DSA Mastery</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Web Development</Link>
-          </div>
-          <div className="flex flex-col space-y-3">
-            <h4 className="font-semibold tracking-tight text-navy-900 dark:text-white">Resources</h4>
-             <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Documentation</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Blog</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Community</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">FAQ</Link>
-          </div>
-          <div className="flex flex-col space-y-3">
-            <h4 className="font-semibold tracking-tight text-navy-900 dark:text-white">Company</h4>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">About Us</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Careers</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Contact</Link>
-            <Link href="#" className="text-sm hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors">Privacy Policy</Link>
-          </div>
+                <div className="space-y-4">
+                    <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">Courses</h4>
+                    <nav className="flex flex-col gap-2 text-muted-foreground">
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Python Basics</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">AI Fundamentals</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">DSA Mastery</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Web Development</Link>
+                    </nav>
+                </div>
+                <div className="space-y-4">
+                    <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">Resources</h4>
+                    <nav className="flex flex-col gap-2 text-muted-foreground">
+                         <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Documentation</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Blog</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Community</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">FAQ</Link>
+                    </nav>
+                </div>
+                <div className="space-y-4">
+                    <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">Company</h4>
+                    <nav className="flex flex-col gap-2 text-muted-foreground">
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">About Us</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Careers</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Contact</Link>
+                        <Link href="#" className="text-sm hover:text-black dark:hover:text-white transition-colors">Privacy Policy</Link>
+                    </nav>
+                </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto border-t border-slate-200 dark:border-navy-800 py-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground gap-4 px-6">

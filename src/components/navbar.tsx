@@ -19,7 +19,7 @@ export function Navbar() {
         <header>
             <nav
                 data-state={menuState && "active"}
-                className="bg-background/50 fixed z-20 w-full border-b backdrop-blur-3xl"
+                className="bg-white dark:bg-black fixed z-20 w-full border-b border-slate-200 dark:border-slate-800"
             >
                 <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -43,7 +43,7 @@ export function Navbar() {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className="text-muted-foreground hover:text-saffron-600 dark:hover:text-saffron-400 block duration-150"
+                                                className="text-slate-600 hover:text-black dark:text-slate-400 dark:hover:text-white block duration-150"
                                             >
                                                 <span>{item.name}</span>
                                             </Link>
@@ -60,7 +60,7 @@ export function Navbar() {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className="text-muted-foreground hover:text-saffron-600 block duration-150"
+                                                className="text-muted-foreground hover:text-black dark:hover:text-white block duration-150"
                                             >
                                                 <span>{item.name}</span>
                                             </Link>
@@ -69,7 +69,7 @@ export function Navbar() {
                                 </ul>
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                                <div className="hidden md:flex items-center gap-1.5 text-xs font-medium text-orange-500 bg-orange-50 dark:bg-orange-950/30 px-3 py-1.5 rounded-full border border-orange-200 dark:border-orange-800 whitespace-nowrap">
+                                <div className="hidden md:flex items-center gap-1.5 text-xs font-medium text-slate-600 bg-slate-100 dark:bg-slate-800 dark:text-slate-300 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 whitespace-nowrap">
                                    <span>🔥</span> 12 day streak
                                 </div>
                                 <Button asChild variant="ghost" size="sm">
@@ -77,7 +77,7 @@ export function Navbar() {
                                         <span>Login</span>
                                     </Link>
                                 </Button>
-                                <Button asChild size="sm" className="bg-saffron-500 hover:bg-saffron-600 text-white dark:text-black">
+                                <Button asChild size="sm" className="bg-black hover:bg-slate-800 text-white dark:bg-white dark:text-black dark:hover:bg-slate-200">
                                     <Link href="/signup">
                                         <span>Start Free</span>
                                     </Link>

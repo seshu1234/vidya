@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
-export function VernacularToggle() {
+export function VernacularToggle({ minimal = false }: { minimal?: boolean }) {
   const [isHinglish, setIsHinglish] = useState(true);
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4 space-y-8">
+      {!minimal && (
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
         <h2 className="scroll-m-20 text-2xl font-extrabold tracking-tight md:text-3xl lg:text-4xl">Experience the Hinglish Magic</h2>
         <p className="text-muted-foreground text-base md:text-lg">Toggle karo aur dekho kaise complex concepts simple ho jaate hain!</p>
@@ -20,7 +21,7 @@ export function VernacularToggle() {
             onClick={() => setIsHinglish(!isHinglish)}
             className={`
               peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50
-              ${isHinglish ? "bg-saffron-500" : "bg-input"}
+              ${isHinglish ? "bg-black dark:bg-white" : "bg-input"}
             `}
           >
             <span
@@ -30,9 +31,35 @@ export function VernacularToggle() {
               `}
             />
           </button>
-          <span className={`text-sm font-medium ${isHinglish ? "text-saffron-600 font-bold" : "text-muted-foreground"}`}>✨ Hinglish</span>
+          <span className={`text-sm font-medium ${isHinglish ? "text-black dark:text-white font-bold" : "text-muted-foreground"}`}>✨ Hinglish</span>
         </div>
       </div>
+      )}
+
+      {minimal && (
+         <div className="flex justify-end mb-4">
+             <div className="flex items-center space-x-4 bg-white/50 backdrop-blur-md p-2 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm">
+                <span className={`text-xs font-medium ${!isHinglish ? "text-black dark:text-white font-bold" : "text-slate-500"}`}>English</span>
+                <button
+                    role="switch"
+                    aria-checked={isHinglish}
+                    onClick={() => setIsHinglish(!isHinglish)}
+                    className={`
+                    peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50
+                    ${isHinglish ? "bg-black dark:bg-white" : "bg-slate-200 dark:bg-slate-700"}
+                    `}
+                >
+                    <span
+                    className={`
+                        pointer-events-none block h-4 w-4 rounded-full bg-white shadow-sm ring-0 transition-transform 
+                        ${isHinglish ? "translate-x-4" : "translate-x-0"}
+                    `}
+                    />
+                </button>
+                <span className={`text-xs font-medium ${isHinglish ? "text-black dark:text-white font-bold" : "text-slate-500"}`}>Hinglish</span>
+            </div>
+         </div>
+      )}
 
       <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Code Editor */}
@@ -71,21 +98,21 @@ export function VernacularToggle() {
         </div>
 
         {/* Right Side: Explanation Card */}
-        <Card className="h-full border-saffron-400/20 shadow-lg dark:bg-navy-950/50 flex flex-col justify-center">
+        <Card className="h-full border-slate-200 shadow-lg dark:bg-navy-950/50 flex flex-col justify-center dark:border-slate-800">
             {isHinglish ? (
                  <CardContent className="p-6 md:p-8 space-y-4">
-                    <div className="inline-flex items-center rounded-lg bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                    <div className="inline-flex items-center rounded-lg bg-slate-100 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-900/30 dark:text-slate-300">
                         🍽️ Real-world Analogy
                     </div>
-                    <h3 className="text-2xl font-bold text-navy-900 dark:text-saffron-400">
+                    <h3 className="text-2xl font-bold text-black dark:text-white">
                         API = Restaurant ka Waiter
                     </h3>
                     <p className="text-lg text-muted-foreground leading-relaxed">
                         API ek waiter jaisa hai! Jaise tum waiter ko order dete ho aur wo kitchen se khana laata hai, waise hi API tumhari app ko server se data laake deta hai.
                     </p>
-                    <div className="rounded-lg bg-muted p-4 font-mono text-sm text-muted-foreground mt-4 border border-saffron-200 dark:border-saffron-900/50">
-                        <span className="text-saffron-600 dark:text-saffron-400">{"// Waiter ko bolo:"}</span> &apos;Bhaiya users ka list laao&apos; <br/>
-                        <span className="text-navy-700 dark:text-blue-300">fetch</span>(&apos;/api/users&apos;)
+                    <div className="rounded-lg bg-muted p-4 font-mono text-sm text-muted-foreground mt-4 border border-slate-200 dark:border-slate-800">
+                        <span className="text-slate-600 dark:text-slate-400">{"// Waiter ko bolo:"}</span> &apos;Bhaiya users ka list laao&apos; <br/>
+                        <span className="text-black dark:text-white">fetch</span>(&apos;/api/users&apos;)
                     </div>
                  </CardContent>
             ) : (

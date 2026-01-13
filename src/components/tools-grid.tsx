@@ -77,9 +77,9 @@ export function ToolsGrid() {
                             {category.tools.map((tool, tIdx) => (
                                 <div key={tIdx} className="
                                     group flex items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-navy-800 
-                                    bg-white dark:bg-navy-900/40 hover:border-saffron-500 hover:shadow-md transition-all cursor-pointer
+                                    bg-white dark:bg-navy-900/40 hover:border-black dark:hover:border-white hover:shadow-md transition-all cursor-pointer
                                 ">
-                                    <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-saffron-600 transition-colors">
+                                    <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-black dark:group-hover:text-white transition-colors">
                                         {tool}
                                     </span>
                                 </div>

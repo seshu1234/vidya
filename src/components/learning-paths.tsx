@@ -100,7 +100,7 @@ export function LearningPaths() {
 
             <div className="grid lg:grid-cols-3 gap-8">
                 {paths.map((path, index) => (
-                    <div key={index} className="relative group rounded-3xl border border-slate-200 dark:border-navy-800 bg-slate-50 dark:bg-navy-900/40 p-8 hover:shadow-2xl transition-all duration-300 hover:border-saffron-200 dark:hover:border-navy-700">
+                    <div key={index} className="relative group rounded-3xl border border-slate-200 dark:border-navy-800 bg-slate-50 dark:bg-navy-900/40 p-8 hover:shadow-2xl transition-all duration-300 hover:border-slate-300 dark:hover:border-slate-700">
                         <div className={`absolute top-0 right-0 p-4 rounded-bl-3xl rounded-tr-3xl ${path.color} shadow-lg group-hover:scale-110 transition-transform`}>
                             {path.icon}
                         </div>

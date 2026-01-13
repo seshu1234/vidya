@@ -40,7 +40,7 @@ export function FAQ() {
                 {faqs.map((faq, index) => (
                     <div 
                         key={index} 
-                        className="border border-slate-200 dark:border-navy-800 rounded-xl overflow-hidden bg-white dark:bg-navy-950/50 transition-all duration-200 hover:border-saffron-200 dark:hover:border-navy-700"
+                        className="border border-slate-200 dark:border-navy-800 rounded-xl overflow-hidden bg-white dark:bg-navy-950/50 transition-all duration-200 hover:border-slate-400 dark:hover:border-slate-600"
                     >
                         <button
                             onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -49,7 +49,7 @@ export function FAQ() {
                             <span className="font-semibold text-lg text-navy-900 dark:text-slate-100">
                                 {faq.question}
                             </span>
-                            <span className="shrink-0 ml-4 text-saffron-500">
+                            <span className="shrink-0 ml-4 text-black dark:text-white">
                                 {openIndex === index ? <Minus className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
                             </span>
                         </button>
