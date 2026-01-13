@@ -2,6 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, BookOpen, CreditCard, TrendingUp } from "lucide-react";
+import { RevenueChart } from "@/components/charts/revenue-chart";
+import { CategoryDistributionChart } from "@/components/charts/category-distribution";
 
 export default function AdminDashboardPage() {
     return (
@@ -22,17 +24,26 @@ export default function AdminDashboardPage() {
             </div>
 
              <div className="grid lg:grid-cols-2 gap-8">
-                 <div className="min-h-[300px] bg-white dark:bg-black rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex items-center justify-center text-slate-400">
-                    Chart: Revenue Growth (Placeholder)
-                 </div>
-                 <div className="min-h-[300px] bg-white dark:bg-black rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex items-center justify-center text-slate-400">
-                    Chart: User Acquisitions (Placeholder)
-                 </div>
+                 <Card className="col-span-1 border-slate-200 dark:border-slate-800">
+                    <CardHeader>
+                        <CardTitle>Revenue Overview</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pl-2">
+                        <RevenueChart />
+                    </CardContent>
+                 </Card>
+                 <Card className="col-span-1 border-slate-200 dark:border-slate-800">
+                    <CardHeader>
+                        <CardTitle>Course Distribution</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <CategoryDistributionChart />
+                    </CardContent>
+                 </Card>
              </div>
         </div>
     );
 }
-
 
 interface StatsCardProps {
     title: string;

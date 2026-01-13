@@ -5,10 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlayCircle, Clock, Award, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { ActivityChart } from "@/components/charts/activity-chart";
+import { SkillRadarChart } from "@/components/charts/skill-radar";
+import { ActivityHeatmap } from "@/components/charts/activity-heatmap";
 
 export default function DashboardPage() {
     return (
-        <div className="space-y-12 pt-12">
+        <div className="space-y-8 pt-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-3xl font-bold font-display text-navy-900 dark:text-white">Welcome back, Rahul!</h1>
@@ -26,6 +29,30 @@ export default function DashboardPage() {
                 <StatsCard title="Hours Spent" value="12h" icon={Clock} color="text-orange-500" />
                 <StatsCard title="Certificates" value="1" icon={Award} color="text-yellow-500" />
                  <StatsCard title="Current Streak" value="12 Days" icon={TrendingUp} color="text-green-500" />
+            </div>
+
+            {/* Activity & Skills */}
+            <div className="grid lg:grid-cols-3 gap-8">
+                <Card className="col-span-1 lg:col-span-2 border-slate-200 dark:border-slate-800">
+                    <CardHeader>
+                        <CardTitle>Learning Activity</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                         <ActivityChart />
+                         <div className="mt-8">
+                            <h4 className="text-sm font-medium text-slate-500 mb-4">Consistency Graph</h4>
+                            <ActivityHeatmap />
+                         </div>
+                    </CardContent>
+                </Card>
+                <Card className="col-span-1 border-slate-200 dark:border-slate-800">
+                     <CardHeader>
+                        <CardTitle>Skill Proficiency</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <SkillRadarChart />
+                    </CardContent>
+                </Card>
             </div>
 
             {/* Continue Learning */}
@@ -68,7 +95,7 @@ export default function DashboardPage() {
                     </Button>
                 </div>
             </section>
-
+            
              {/* Recommended for You */}
              <section className="space-y-4 pt-4">
                 <h2 className="text-xl font-bold text-navy-900 dark:text-white">Recommended for you</h2>

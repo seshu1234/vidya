@@ -4,11 +4,12 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { BookOpen, Trophy, Settings, LogOut, User } from "lucide-react";
+import { LayoutDashboard, BookOpen, Trophy, Settings, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const sidebarItems = [
-    { name: "My Learning", href: "/dashboard", icon: BookOpen },
+    { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
+    { name: "My Learning", href: "/dashboard/my-learning", icon: BookOpen },
     { name: "Certificates", href: "/dashboard/certificates", icon: Trophy },
     { name: "Profile", href: "/dashboard/profile", icon: User },
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
