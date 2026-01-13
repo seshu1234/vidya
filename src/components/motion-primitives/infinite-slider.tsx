@@ -35,22 +35,7 @@ export const InfiniteSlider = ({
         {children}
         {children}
       </div>
-       <style jsx>{`
-        .animate-scroll-left {
-            animation: scroll-left var(--duration) linear infinite;
-        }
-        .animate-scroll-right {
-             animation: scroll-right var(--duration) linear infinite;
-        }
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - var(--gap)/2)); }
-        }
-         @keyframes scroll-right {
-          0% { transform: translateX(calc(-50% - var(--gap)/2)); }
-          100% { transform: translateX(0); }
-        }
-      `}</style>
+
     </div>
   );
 };
