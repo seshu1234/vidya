@@ -15,12 +15,20 @@ const sidebarItems = [
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+    className?: string;
+}
+
+export function Sidebar({ className }: SidebarProps) {
     const pathname = usePathname();
 
     return (
-        <aside className="fixed bottom-0 left-0 top-[73px] z-30 hidden w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-black md:flex">
-            
+        <aside className={cn("hidden md:flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-black fixed bottom-0 left-0 top-0 z-30 w-64", className)}>
+            <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-black">
+                <div>
+                    <p className="text-lg font-bold">Vidy AI</p>
+                </div>
+            </div>
             <div className="flex flex-1 flex-col justify-between px-4 py-6">
                 <nav className="space-y-1">
                     {sidebarItems.map((item) => {

@@ -28,16 +28,16 @@ export function Hero() {
                         </div>
                     </div>
                     
-                    <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-7xl mb-6 bg-gradient-to-b from-black to-slate-600 dark:from-white dark:to-slate-400 bg-clip-text text-transparent pb-2 font-display leading-tight">
+                    <h1 className="scroll-m-20 text-4xl sm:text-5xl font-extrabold tracking-tight lg:text-7xl mb-6 bg-gradient-to-b from-black to-slate-600 dark:from-white dark:to-slate-400 bg-clip-text text-transparent pb-2 font-display leading-[1.15]">
                         Coding ab <br />
-                        <span className="relative whitespace-nowrap px-4 lg:px-0">
+                        <span className="relative whitespace-nowrap px-4 lg:px-0 inline-block my-1 lg:my-0">
                             <span className="relative z-10 text-black dark:text-white">seekhein simple</span>
-                            <span className="absolute bottom-2 left-0 w-full h-3 bg-slate-200/50 dark:bg-slate-700/50 -rotate-1 rounded-full -z-0"></span>
+                            <span className="absolute bottom-1 sm:bottom-2 left-0 w-full h-2 sm:h-3 bg-slate-200/50 dark:bg-slate-700/50 -rotate-1 rounded-full -z-0"></span>
                         </span> <br />
                         <span className="text-slate-700 dark:text-slate-300">Hinglish mein.</span>
                     </h1>
 
-                    <p className="leading-relaxed text-xl text-slate-500 dark:text-slate-400 max-w-2xl lg:max-w-xl font-sans mb-10">
+                    <p className="leading-relaxed text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl lg:max-w-xl font-sans mb-8 sm:mb-10 px-4 lg:px-0">
                         India&apos;s most loved coding platform. Learn specific skills like React, Next.js, and GenAI with 
                         interactive lessons and <span className="font-semibold text-black dark:text-white">desi analogies</span> that make sense.
                     </p>

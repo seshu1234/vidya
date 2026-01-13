@@ -27,7 +27,11 @@ export default function OnboardingPage() {
             setStep(step + 1);
         } else {
             // Submit and redirect to dashboard
-            router.push("/dashboard"); 
+            if (typeof window !== "undefined") {
+                localStorage.setItem("vidya_onboarding", JSON.stringify(formData));
+                localStorage.setItem("vidya_user_goal", formData.goal);
+            }
+            router.push("/dashboard?welcome=true"); 
         }
     };
 

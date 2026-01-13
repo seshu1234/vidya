@@ -8,11 +8,47 @@ import Link from "next/link";
 import { ActivityChart } from "@/components/charts/activity-chart";
 import { SkillRadarChart } from "@/components/charts/skill-radar";
 import { ActivityHeatmap } from "@/components/charts/activity-heatmap";
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { triggerConfetti } from "@/components/ui/confetti";
 
-export default function DashboardPage() {
+function DashboardContent() {
+    const searchParams = useSearchParams();
+    const [goal, setGoal] = useState<string | null>(null);
+
+    useEffect(() => {
+        // Load personalization on mount
+        const timer = setTimeout(() => {
+            const storedGoal = localStorage.getItem("vidya_user_goal");
+            if (storedGoal) {
+                setGoal(storedGoal);
+            }
+        }, 0);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        // Check for onboarding success
+        if (searchParams.get("welcome") === "true") {
+            triggerConfetti();
+        }
+    }, [searchParams]);
+
+    const getRecommendation = () => {
+        switch(goal) {
+            case "Get a Job": return { title: "Full Stack Master Path", desc: "The fastest route to a dev job.", badge: "Career Path" };
+            case "Learn a Skill": return { title: "React & Next.js Deep Dive", desc: "Master modern frontend dev.", badge: "Skill Path" };
+            case "Build a Project": return { title: "SaaS Builder Kit", desc: "Launch your startup in 30 days.", badge: "Project Path" };
+            default: return { title: "Computer Science Fundamentals", desc: "Build a strong foundation.", badge: "Foundation" };
+        }
+    }
+
+    const rec = getRecommendation();
+
     return (
-        <div className="space-y-8 pt-6">
+        <div className="space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                {/* ... existing header ... */}
                 <div>
                     <h1 className="text-3xl font-bold font-display text-navy-900 dark:text-white">Welcome back, Rahul!</h1>
                     <p className="text-slate-500 dark:text-slate-400">You&apos;ve completed 40% of your weekly goal. Keep it up!</p>
@@ -24,7 +60,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Stats Overview */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <StatsCard title="Courses in Progress" value="3" icon={PlayCircle} color="text-blue-500" />
                 <StatsCard title="Hours Spent" value="12h" icon={Clock} color="text-orange-500" />
                 <StatsCard title="Certificates" value="1" icon={Award} color="text-yellow-500" />
@@ -32,12 +68,12 @@ export default function DashboardPage() {
             </div>
 
             {/* Activity & Skills */}
-            <div className="grid lg:grid-cols-3 gap-8">
-                <Card className="col-span-1 lg:col-span-2 border-slate-200 dark:border-slate-800">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <Card className="col-span-1 lg:col-span-2 border-slate-200 dark:border-slate-800 min-w-0">
                     <CardHeader>
                         <CardTitle>Learning Activity</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="min-w-0">
                          <ActivityChart />
                          <div className="mt-8">
                             <h4 className="text-sm font-medium text-slate-500 mb-4">Consistency Graph</h4>
@@ -45,7 +81,7 @@ export default function DashboardPage() {
                          </div>
                     </CardContent>
                 </Card>
-                <Card className="col-span-1 border-slate-200 dark:border-slate-800">
+                <Card className="col-span-1 border-slate-200 dark:border-slate-800 min-w-0">
                      <CardHeader>
                         <CardTitle>Skill Proficiency</CardTitle>
                     </CardHeader>
@@ -98,7 +134,25 @@ export default function DashboardPage() {
             
              {/* Recommended for You */}
              <section className="space-y-4 pt-4">
-                <h2 className="text-xl font-bold text-navy-900 dark:text-white">Recommended for you</h2>
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h2 className="text-xl font-bold text-navy-900 dark:text-white">Recommended for you</h2>
+                        {goal && <p className="text-slate-500 text-sm">Based on your goal: <span className="font-semibold text-indigo-600">{goal}</span></p>}
+                    </div>
+                </div>
+                
+                {/* Dynamic Recommendation Card (Featured) */}
+                {goal && (
+                     <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800 p-6 rounded-2xl flex items-center justify-between mb-6">
+                        <div>
+                            <Badge className="bg-indigo-600 mb-2">{rec.badge}</Badge>
+                            <h3 className="text-xl font-bold text-navy-900 dark:text-white">{rec.title}</h3>
+                            <p className="text-slate-600 dark:text-slate-300">{rec.desc}</p>
+                        </div>
+                        <Button>Start Path</Button>
+                     </div>
+                )}
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                      <CourseCard 
                         title="AI Architect" 
@@ -171,4 +225,12 @@ function CourseCard({ title, category, rating, gradient }: CourseCardProps) {
             </CardContent>
         </Card>
     )
+}
+
+export default function DashboardPage() {
+    return (
+        <Suspense fallback={<div className="p-8 text-center text-slate-500">Loading Dashboard...</div>}>
+            <DashboardContent />
+        </Suspense>
+    );
 }
