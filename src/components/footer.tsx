@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, MessageSquare, Users } from "lucide-react";
 
 const ANIMATION_DURATION = 0.6;
 const DELAY_INCREMENT = 0.1;
@@ -98,6 +98,67 @@ export function Footer({
           viewport={{ once: true }}
           whileInView={{ opacity: 1, y: 0 }}
         >
+        
+        {/* Community Stats Section (New) */}
+        <div className="lg:col-span-12 mb-12 border-b border-slate-200 dark:border-slate-800 pb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                {/* GitHub */}
+                <div className="flex flex-col items-center group">
+                    <div className="mb-2 flex items-center gap-2 text-slate-900 dark:text-white font-bold text-3xl">
+                        <Github className="h-6 w-6" />
+                        <span>347k</span>
+                    </div>
+                    <div className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">GitHub Stars</div>
+                    <p className="text-xs text-green-600 font-semibold mb-4">+90k this month</p>
+                    <motion.a 
+                        href="https://github.com" 
+                        target="_blank"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-900 text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Github className="h-4 w-4" /> Star us on GitHub
+                    </motion.a>
+                </div>
+
+                {/* Users */}
+                <div className="flex flex-col items-center group border-l border-r border-slate-100 dark:border-slate-800/50">
+                    <div className="mb-2 flex items-center gap-2 text-slate-900 dark:text-white font-bold text-3xl">
+                        <Users className="h-6 w-6" />
+                        <span>2.1M</span>
+                    </div>
+                    <div className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">Registered Users</div>
+                    <p className="text-xs text-green-600 font-semibold mb-4">+2k this month</p>
+                    <motion.a 
+                        href="/register" 
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-900 text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Users className="h-4 w-4" /> Register yourself
+                    </motion.a>
+                </div>
+
+                {/* Discord */}
+                <div className="flex flex-col items-center group">
+                    <div className="mb-2 flex items-center gap-2 text-slate-900 dark:text-white font-bold text-3xl">
+                        <MessageSquare className="h-6 w-6" />
+                        <span>43k</span>
+                    </div>
+                    <div className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">Discord Members</div>
+                    <p className="text-xs text-slate-400 mb-4">Join the community</p>
+                    <motion.a 
+                        href="https://discord.com" 
+                        target="_blank"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-900 text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <MessageSquare className="h-4 w-4" /> Join on Discord
+                    </motion.a>
+                </div>
+            </div>
+        </div>
           {/* Company Info & Newsletter */}
           <div className="lg:col-span-5">
             <motion.div
