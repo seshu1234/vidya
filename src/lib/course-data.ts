@@ -60,7 +60,19 @@ export const courses: Course[] = [
     { id: "ai-6", title: "HuggingFace Transformers", slug: "huggingface-transformers", subtitle: "Local Models", level: "Advanced", duration: "6 Weeks", lessons: 50, category: "AI & Data", rating: 4.7, students: 4500, price: "Free", description: "", syllabus: [], features: [] },
 
      // Programming
-    { id: "prog-1", title: "C Programming", slug: "c-programming", subtitle: "Mother of Languages", level: "Beginner", duration: "10 Weeks", lessons: 60, category: "Programming", rating: 4.8, students: 15000, price: "Free", description: "", syllabus: [], features: [] },
+    { 
+        id: "prog-1", title: "C Programming Masterclass", slug: "c-programming", subtitle: "The Mother of All Languages", 
+        level: "Beginner", duration: "10 Weeks", lessons: 60, category: "Programming", rating: 4.8, students: 15000, price: "Free", 
+        description: "Start your coding journey with C, the language that powers operating systems and embedded devices. Understand memory management, pointers, and data structures from the ground up.",
+        syllabus: [
+            { week: 1, title: "Introduction to C", topics: ["History & Importance", "Setting up Environment", "Hello World", "Variables & Data Types"] },
+            { week: 2, title: "Control Flow", topics: ["If-Else Statements", "Switch Case", "Loops (For, While, Do-While)", "Break & Continue"] },
+            { week: 3, title: "Functions & Recursion", topics: ["Function Declaration", "Parameters & Return Values", "Recursion Basics", "Stack Memory"] },
+            { week: 4, title: "Pointers & Memory", topics: ["Pointer Syntax", "Pointer Arithmetic", "Call by Value vs Reference", "Dynamic Memory (malloc/free)"] },
+            { week: 5, title: "Arrays & Strings", topics: ["1D & 2D Arrays", "String Handling", "Pointers with Arrays", "Buffer Overflow Risks"] },
+        ], 
+        features: ["Master Pointers & Memory Management", "Build a Text Editor from Scratch", "Understand How Computers Work", "Prepare for Embedded Systems"] 
+    },
     { id: "prog-2", title: "C++ with STL", slug: "cpp-with-stl", subtitle: "Competitive Coding", level: "Intermediate", duration: "12 Weeks", lessons: 75, category: "Programming", rating: 4.9, students: 12000, price: "Free", description: "", syllabus: [], features: [] },
     { id: "prog-3", title: "Java Masterclass", slug: "java-masterclass", subtitle: "Core + Advanced", level: "Intermediate", duration: "14 Weeks", lessons: 80, category: "Programming", rating: 4.7, students: 18000, price: "Free", description: "", syllabus: [], features: [] },
     { id: "prog-4", title: "Python Zero to Hero", slug: "python-zero-to-hero", subtitle: "Scripting to AI", level: "Beginner", duration: "8 Weeks", lessons: 55, category: "Programming", rating: 4.9, students: 25000, price: "Free", description: "", syllabus: [], features: [] },
