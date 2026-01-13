@@ -40,6 +40,16 @@ export function LearningSidebarContent({ course, className }: { course: Course, 
                     {course.title}
                 </h2>
                 <div className="mt-4 px-1">
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-800">
+                             <div className="h-3 w-3 bg-amber-500 rounded-full animate-pulse" />
+                             3 Day Streak
+                        </div>
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-2.5 py-1 rounded-full border border-indigo-200 dark:border-indigo-800">
+                             <div className="h-3 w-3 bg-indigo-500 rounded-full" />
+                             1,250 XP
+                        </div>
+                    </div>
                     <div className="flex items-center justify-between text-xs mb-1.5">
                         <span className="font-medium text-muted-foreground">{progress}% Completed</span>
                         <span className="text-muted-foreground">8/60</span>

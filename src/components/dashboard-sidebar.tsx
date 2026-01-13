@@ -18,15 +18,7 @@ export function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-black md:flex">
-             <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 dark:border-slate-800">
-                <Link href="/" className="flex items-center gap-2 font-bold text-xl text-navy-900 dark:text-white">
-                    <div className="h-8 w-8 bg-black dark:bg-white rounded-lg flex items-center justify-center text-white dark:text-black font-display font-bold text-lg">
-                        NJ
-                    </div>
-                    NextGovJob
-                </Link>
-            </div>
+        <aside className="fixed bottom-0 left-0 top-[73px] z-30 hidden w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-black md:flex">
             
             <div className="flex flex-1 flex-col justify-between px-4 py-6">
                 <nav className="space-y-1">

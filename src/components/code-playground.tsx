@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 interface CodePlaygroundProps {
     defaultLanguage?: string;
     defaultValue?: string;
+    value?: string;
+    onChange?: (value: string) => void;
     theme?: "vs-dark" | "light";
 }
 
@@ -22,8 +24,24 @@ const RUNTIME_MAP: Record<string, { language: string; version: string }> = {
     java: { language: "java", version: "15.0.2" },
 };
 
-export function CodePlayground({ defaultLanguage = "c", defaultValue = "// Write your code here", theme = "vs-dark" }: CodePlaygroundProps) {
-    const [code, setCode] = useState(defaultValue);
+export function CodePlayground({ 
+    defaultLanguage = "c", 
+    defaultValue = "// Write your code here", 
+    value,
+    onChange,
+    theme = "vs-dark" 
+}: CodePlaygroundProps) {
+    const [internalCode, setInternalCode] = useState(defaultValue);
+
+    const code = value !== undefined ? value : internalCode;
+    const handleCodeChange = (newCode: string | undefined) => {
+        const val = newCode || "";
+        if (onChange) {
+            onChange(val);
+        } else {
+            setInternalCode(val);
+        }
+    };
     const [output, setOutput] = useState("");
     const [isRunning, setIsRunning] = useState(false);
     const [error, setError] = useState(false);
@@ -101,7 +119,7 @@ export function CodePlayground({ defaultLanguage = "c", defaultValue = "// Write
                     defaultLanguage={defaultLanguage === "c" ? "c" : defaultLanguage} // Monaco uses 'c' for C
                     theme={theme}
                     value={code}
-                    onChange={(value) => setCode(value || "")}
+                    onChange={handleCodeChange}
                     options={{
                         minimap: { enabled: false },
                         fontSize: 14,
