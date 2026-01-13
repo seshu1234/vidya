@@ -14,7 +14,7 @@ export default function Home() {
         <CourseGrid />
         
         {/* Stats Section */}
-        <section className="container mx-auto py-12 md:py-24 border-y border-slate-100 dark:border-navy-800 bg-white dark:bg-navy-950">
+        <section className="max-w-7xl mx-auto py-12 md:py-24 border-y border-slate-100 dark:border-navy-800 bg-white dark:bg-navy-950">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                 <div className="space-y-2">
                     <h3 className="text-3xl md:text-4xl font-bold text-saffron-600 dark:text-saffron-500">50,000+</h3>
@@ -42,8 +42,8 @@ export default function Home() {
         <Testimonials />
 
         {/* CTA Section */}
-        <section className="container mx-auto py-24 text-center">
-            <div className="max-w-3xl mx-auto space-y-8 bg-navy-950 dark:bg-saffron-500/10 rounded-3xl p-8 md:p-16 relative overflow-hidden">
+        <section className="max-w-7xl mx-auto py-24 text-center">
+            <div className="max-w-7xl mx-auto space-y-8 bg-navy-950 dark:bg-saffron-500/10 rounded-3xl p-8 md:p-16 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-saffron-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
                 

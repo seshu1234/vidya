@@ -7,7 +7,7 @@ export function VernacularToggle() {
   const [isHinglish, setIsHinglish] = useState(true);
 
   return (
-    <div className="w-full max-w-5xl mx-auto p-4 space-y-8">
+    <div className="w-full max-w-7xl mx-auto p-4 space-y-8">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
         <h2 className="text-3xl font-bold tracking-tight">Experience the Hinglish Magic</h2>
         <p className="text-muted-foreground">Toggle karo aur dekho kaise complex concepts simple ho jaate hain!</p>

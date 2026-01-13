@@ -1,66 +1,92 @@
+"use client";
+
 import Link from "next/link";
+import { Logo } from "@/components/logo";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import React from "react";
+
+const menuItems = [
+    { name: "Courses", href: "/courses" },
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "Leaderboard", href: "/leaderboard" },
+    { name: "Community", href: "/community" },
+];
 
 export function Navbar() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center">
-        <div className="mr-8 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-heading font-bold text-xl text-saffron-600 dark:text-saffron-500">
-              NextGovJob
-            </span>
-          </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link
-              href="/courses"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
+    const [menuState, setMenuState] = React.useState(false);
+    return (
+        <header>
+            <nav
+                data-state={menuState && "active"}
+                className="bg-background/50 fixed z-20 w-full border-b backdrop-blur-3xl"
             >
-              Courses
-            </Link>
-            <Link
-              href="/dashboard"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Dashboard
-            </Link>
-            <Link
-              href="/leaderboard"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Leaderboard
-            </Link>
-            <Link
-              href="/community"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Community
-            </Link>
-          </nav>
-        </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* Mobile Menu Trigger would go here for small screens - keeping simple for now */}
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center gap-1.5 text-sm font-medium text-orange-500 bg-orange-50 dark:bg-orange-950/30 px-3 py-1 rounded-full border border-orange-200 dark:border-orange-800">
-              <span>🔥</span>
-              <span>12 day streak</span>
-            </div>
-            <nav className="flex items-center space-x-2">
-              <Button variant="ghost" size="sm">
-                Login
-              </Button>
-              <Button
-                size="sm"
-                className="bg-saffron-500 hover:bg-saffron-600 text-white dark:text-black font-semibold"
-              >
-                Start Free
-              </Button>
+                <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
+                    <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
+                        <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
+                            <Link href="/" aria-label="home" className="flex items-center space-x-2">
+                                <Logo />
+                            </Link>
+
+                            <button
+                                onClick={() => setMenuState(!menuState)}
+                                aria-label={menuState ? "Close Menu" : "Open Menu"}
+                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+                            >
+                                <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
+                                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                            </button>
+
+                            <div className="hidden lg:block">
+                                <ul className="flex gap-8 text-sm font-medium">
+                                    {menuItems.map((item, index) => (
+                                        <li key={index}>
+                                            <Link
+                                                href={item.href}
+                                                className="text-muted-foreground hover:text-saffron-600 dark:hover:text-saffron-400 block duration-150"
+                                            >
+                                                <span>{item.name}</span>
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
+                            <div className="lg:hidden">
+                                <ul className="space-y-6 text-base font-medium">
+                                    {menuItems.map((item, index) => (
+                                        <li key={index}>
+                                            <Link
+                                                href={item.href}
+                                                className="text-muted-foreground hover:text-saffron-600 block duration-150"
+                                            >
+                                                <span>{item.name}</span>
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                                <div className="hidden md:flex items-center gap-1.5 text-xs font-medium text-orange-500 bg-orange-50 dark:bg-orange-950/30 px-3 py-1.5 rounded-full border border-orange-200 dark:border-orange-800 whitespace-nowrap">
+                                   <span>🔥</span> 12 day streak
+                                </div>
+                                <Button asChild variant="ghost" size="sm">
+                                    <Link href="/login">
+                                        <span>Login</span>
+                                    </Link>
+                                </Button>
+                                <Button asChild size="sm" className="bg-saffron-500 hover:bg-saffron-600 text-white dark:text-black">
+                                    <Link href="/signup">
+                                        <span>Start Free</span>
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+        </header>
+    );
 }
