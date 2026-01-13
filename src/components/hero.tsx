@@ -9,19 +9,19 @@ import { HeroIllustration } from "@/components/hero-illustration";
 export function Hero() {
     return (
         <section className="overflow-x-hidden pt-12 md:pt-20">
-            <div className="max-w-7xl mx-auto px-6 pb-24 md:pb-32">
+            <div className="max-w-7xl mx-auto px-6 py-12">
                  <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column: Content */}
                     <div className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
                         <div className="rounded-2xl inline-flex bg-muted/80 backdrop-blur-sm border border-border/50 px-4 py-1.5 text-sm font-medium text-saffron-600 dark:text-saffron-400 mb-6 font-sans">
                             🚀 50,000+ students already learning
                         </div>
-                        <h1 className="max-w-3xl text-balance text-4xl font-extrabold md:text-6xl lg:text-7xl tracking-tight text-navy-950 dark:text-white leading-[1.1] font-sans">
+                        <h1 className="max-w-3xl text-balance text-3xl font-extrabold sm:text-5xl md:text-4xl lg:text-5xl tracking-tight text-navy-950 dark:text-white leading-[1.1] font-sans">
                             AI aur Coding <br />
                             <span className="text-saffron-500">seekhein simple</span> <br />
                             Hinglish mein
                         </h1>
-                        <p className="mt-6 max-w-lg text-lg text-muted-foreground leading-relaxed font-sans">
+                        <p className="mt-6 max-w-lg text-base md:text-lg text-muted-foreground leading-relaxed font-sans">
                             Complex tech concepts ko samjho grocery store ki tarah simple analogies mein. Python, Java, AI — sab kuch apni bhasha mein!
                         </p>
 

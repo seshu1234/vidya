@@ -4,10 +4,10 @@ import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
 
 export function VerifiedCompanies() {
   return (
-    <div className="group relative m-auto max-w-6xl px-6">
+    <div className="group relative m-auto max-w-7xl px-6">
       <div className="flex flex-col items-center md:flex-row">
         <div className="md:max-w-44 md:border-r md:pr-6 mb-6 md:mb-0">
-          <p className="text-center md:text-end text-sm text-muted-foreground font-medium">Trusted by learners from top companies</p>
+          <p className="text-center md:text-end text-sm md:text-base text-muted-foreground font-medium">Trusted by learners from top companies</p>
         </div>
         <div className="relative py-2 md:w-[calc(100%-11rem)] w-full overflow-hidden">
           <InfiniteSlider speed={40} gap={60}>

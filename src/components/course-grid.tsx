@@ -55,16 +55,16 @@ const courses = [
 
 export function CourseGrid() {
   return (
-    <section className="container mx-auto py-8 md:py-12 lg:py-24 bg-slate-50 dark:bg-black/20">
-      <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-        <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl font-bold text-navy-900 dark:text-white">
+    <section className="max-w-7xl mx-auto py-8 md:py-12 lg:py-24 dark:bg-black/20">
+      <div className="mx-auto flex flex-col items-center justify-center gap-4 text-center">
+        <h2 className="scroll-m-20 text-xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-navy-900 dark:text-white">
           Course Catalog
         </h2>
-        <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7 mb-4">
+        <p className="max-w-[85%] leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground text-base sm:text-lg mb-4">
           Choose Your Learning Path. Har course mein real-world analogies, interactive coding, aur Hinglish explanations!
         </p>
       </div>
-      <div className="mx-auto grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 md:max-w-[64rem] mt-8">
+      <div className="mx-auto grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 p-4">
         {courses.map((course) => (
           <Card key={course.title} className="flex flex-col justify-between border-saffron-100 dark:border-navy-800 bg-white dark:bg-navy-950/50 hover:shadow-lg transition-all hover:-translate-y-1">
             <CardHeader>

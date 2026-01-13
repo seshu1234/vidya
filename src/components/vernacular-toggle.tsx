@@ -9,8 +9,8 @@ export function VernacularToggle() {
   return (
     <div className="w-full max-w-7xl mx-auto p-4 space-y-8">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
-        <h2 className="text-3xl font-bold tracking-tight">Experience the Hinglish Magic</h2>
-        <p className="text-muted-foreground">Toggle karo aur dekho kaise complex concepts simple ho jaate hain!</p>
+        <h2 className="scroll-m-20 text-2xl font-extrabold tracking-tight md:text-3xl lg:text-4xl">Experience the Hinglish Magic</h2>
+        <p className="text-muted-foreground text-base md:text-lg">Toggle karo aur dekho kaise complex concepts simple ho jaate hain!</p>
         
         <div className="flex items-center space-x-4 bg-muted/50 p-2 rounded-full border">
           <span className={`text-sm font-medium ${!isHinglish ? "text-primary font-bold" : "text-muted-foreground"}`}>Technical English</span>
