@@ -19,7 +19,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
-import { Star, Users, Clock, BookOpen, CheckCircle2, Globe, Linkedin, Twitter, AlertCircle, MessageSquare } from "lucide-react";
+import { Star, Users, Clock, BookOpen, CheckCircle2, Globe, Linkedin, Twitter, AlertCircle, MessageSquare, Share2 } from "lucide-react";
 import React, { use } from "react";
 import Link from "next/link";
 
@@ -312,9 +312,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                         <div className="sticky top-24 space-y-6">
                             <Card className="border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden rounded-xl sticky top-24">
                                 <CardContent className="p-5">
-                                    <Button size="lg" className="w-full font-bold h-11 text-base shadow-indigo-500/20 shadow-sm hover:shadow-indigo-500/30 transition-all mb-3">
-                                        Start Reading Now
-                                    </Button>
+                                    <Link href={`/learn/${course.slug}`}>
+                                        <Button size="lg" className="w-full font-bold h-11 text-base shadow-indigo-500/20 shadow-sm hover:shadow-indigo-500/30 transition-all mb-3">
+                                            Start Reading Now
+                                        </Button>
+                                    </Link>
                                     <Button variant="outline" size="lg" className="w-full h-11 font-medium bg-transparent border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
                                         Add to Library
                                     </Button>
@@ -337,9 +339,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                         <div className="hidden sm:block">
                              {/* Pricing removed */}
                         </div>
-                        <Button className="w-full h-12 font-bold text-base shadow-md">
-                            Start Reading Now
-                        </Button>
+                        <Link href={`/learn/${course.slug}`} className="w-full">
+                            <Button className="w-full h-12 font-bold text-base shadow-md">
+                                Start Reading Now
+                            </Button>
+                        </Link>
                     </div>
                 </div>
 
