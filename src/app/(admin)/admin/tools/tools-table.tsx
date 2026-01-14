@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition, useCallback } from "react";
-import { getTools, deleteTool, createTool, updateTool } from "./actions";
-import { getDBCategories, getDBCourses } from "@/lib/course-service";
+import { getTools, deleteTool, createTool, updateTool, fetchCategories, fetchCourses } from "./tool-actions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -69,8 +68,8 @@ export function ToolsTable() {
         try {
             const [toolsData, reqCategories, reqCourses] = await Promise.all([
                 getTools(search),
-                getDBCategories(),
-                getDBCourses(true) // Include hidden tool courses
+                fetchCategories(),
+                fetchCourses(true) // Include hidden tool courses
             ]);
             
             setTools(toolsData as Tool[]);
