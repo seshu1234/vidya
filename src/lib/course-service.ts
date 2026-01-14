@@ -21,6 +21,7 @@ export async function getDBCourses(includeHidden = false) {
     // Map DB fields to the expected Course type if necessary
     return (data || []).map(course => ({
         ...course,
+        category: course.category || "General",
         syllabus: course.metadata?.syllabus || [],
         features: course.metadata?.features || [],
         level: course.metadata?.level || 'Beginner',

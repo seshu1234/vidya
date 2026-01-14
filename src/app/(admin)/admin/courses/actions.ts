@@ -18,7 +18,13 @@ export async function getCourses(search?: string) {
   return data
 }
 
-// ... existing getCourse ...
+export async function getCourse(id: string) {
+  const supabase = await createAdminClient()
+  const { data, error } = await supabase.schema('vidya').from('courses').select('*').eq('id', id).single()
+
+  if (error) return null
+  return data
+}
 
 export async function createCourse(formData: FormData) {
   const supabase = await createAdminClient()
@@ -146,4 +152,17 @@ export async function getChapters(courseId: string) {
 
   if (error) throw new Error(error.message)
   return data
+}
+
+export async function updateCourse(courseId: string, data: Record<string, unknown>) {
+    const supabase = await createAdminClient()
+    const { error } = await supabase
+        .schema('vidya')
+        .from('courses')
+        .update(data)
+        .eq('id', courseId)
+
+    if (error) throw new Error(error.message)
+    revalidatePath('/admin/courses')
+    revalidatePath(`/admin/courses/${courseId}`)
 }
