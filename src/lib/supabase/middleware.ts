@@ -49,7 +49,7 @@ export async function updateSession(request: NextRequest) {
       // Usually admins can also access dashboard, but let's stick to strict requirement first or assume "user" is a base role everyone has.
       // Migration sets default to ['user'], so admins should also have ['user', 'admin'] ideally.
       // But if we have separate roles, we check specific inclusion.
-      if (!roles.includes('user') && !roles.includes('admin') && !roles.includes('super admin')) {
+      if (!roles.includes('user') && !roles.includes('admin') && !roles.includes('super_admin')) {
           // If they don't have the role, maybe redirect to home or unauthorized
           url.pathname = '/' // or /unauthorized
           return NextResponse.redirect(url)
@@ -63,7 +63,7 @@ export async function updateSession(request: NextRequest) {
       }
       
       const roles = user.app_metadata?.roles || []
-      const hasAdminAccess = roles.includes('admin') || roles.includes('super admin')
+      const hasAdminAccess = roles.includes('admin') || roles.includes('super_admin')
       
       if (!hasAdminAccess) {
           url.pathname = '/dashboard' // Redirect regular users to dashboard

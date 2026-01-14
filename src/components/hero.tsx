@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="relative overflow-hidden pt-12 md:pt-32 pb-16 lg:pb-32">
+        <section className="relative overflow-hidden pt-24 md:pt-48 pb-16 lg:pb-32">
              {/* Background Effects */}
             <div className="absolute top-0 left-0 right-0 h-[800px] overflow-hidden -z-20 pointer-events-none">
                  <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80%] h-[80%] bg-slate-100/40 dark:bg-slate-900/20 blur-[150px] rounded-full"></div>
