@@ -24,6 +24,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 
 
 type Profile = {
@@ -101,9 +102,11 @@ export function UsersTable() {
         startTransition(async () => {
             try {
                 await updateUserRole(userId, newRoles);
+                toast.success("User role updated successfully");
                 await loadUsers();
             } catch (e) {
                 console.error(e);
+                toast.error("Failed to update user role");
             }
         });
     };
@@ -114,9 +117,11 @@ export function UsersTable() {
         startTransition(async () => {
              try {
                 await deleteUser(userId);
+                toast.success("User deleted successfully");
                 await loadUsers();
             } catch (e) {
                  console.error(e);
+                 toast.error("Failed to delete user");
             }
         });
     }
@@ -134,10 +139,12 @@ export function UsersTable() {
         startTransition(async () => {
             try {
                 await updateUserDetails(editingUser.id, { full_name, email });
+                toast.success("User details updated successfully");
                 setEditingUser(null);
                 await loadUsers();
             } catch (err) {
                 console.error(err);
+                toast.error("Failed to update user details");
             }
         });
     };

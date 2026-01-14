@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 // Define strict type for Course to match database
 type Course = {
@@ -41,11 +42,11 @@ export function CourseEditForm({ course }: { course: Course }) {
         startTransition(async () => {
             try {
                 await updateCourse(course.id, data);
+                toast.success("Course updated successfully");
                 router.refresh(); 
-                // Currently refresh() might not be enough if we rely on props, but since this is a client component in a server page, refreshing the server component (page) will update props.
             } catch (error) {
                 console.error(error);
-                alert("Failed to update course");
+                toast.error("Failed to update course");
             }
         });
     };
