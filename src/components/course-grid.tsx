@@ -3,13 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { courses as allCourses, getAllCategories } from "@/lib/course-data";
+import { getDBCourses, getDBCategories } from "@/lib/course-service";
 
-export function CourseGrid() {
-  const categories = getAllCategories();
+export async function CourseGrid() {
+  const allCourses = await getDBCourses();
+  const dbCategories = await getDBCategories();
+  
+  const categories = dbCategories.map(c => c.name);
 
+  // Group courses by category for tabs
   const getCourses = (category: string) => {
-    if (category === "All") return allCourses;
     return allCourses.filter((c) => c.category === category);
   };
 
@@ -25,7 +28,7 @@ export function CourseGrid() {
           Everything you need to master Computer Science.
         </p>
 
-        <Tabs defaultValue="Latest Trends" className="w-full">
+        <Tabs defaultValue={categories[0]} className="w-full">
                 <TabsList className="flex flex-wrap h-auto gap-2 bg-transparent p-0 mb-12 justify-center">
                     {categories.map((category) => (
                         <TabsTrigger 

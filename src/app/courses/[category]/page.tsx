@@ -1,6 +1,4 @@
-"use client";
-
-import { courses } from "@/lib/course-data"; // Assuming these exist
+import { getDBCoursesByCategory } from "@/lib/course-service";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Card, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -8,21 +6,13 @@ import { Badge } from "@/components/ui/badge";
 import { BookOpen, Clock } from "lucide-react";
 import Link from "next/link";
 
-import React, { use } from "react";
-// ... imports
-
-export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-    const { category } = use(params);
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+    const { category } = await params;
     
     const categorySlug = category;
     const categoryName = categorySlug.replace(/-/g, " ");
     
-    const filteredCourses = courses.filter(c => c.category.toLowerCase() === categoryName.toLowerCase());
-
-    if (filteredCourses.length === 0) {
-        // Optional: show empty state or redirect
-        // return notFound();
-    }
+    const filteredCourses = await getDBCoursesByCategory(categoryName);
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50 dark:bg-black font-sans">

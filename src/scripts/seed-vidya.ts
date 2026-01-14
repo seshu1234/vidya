@@ -66,7 +66,7 @@ async function seed() {
                 const chapterSlug = week.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 
                 // Construct content from topic map or default
-                let content = week.content 
+                const content = week.content 
                     ? Object.values(week.content).join("\n\n---\n\n")
                     : `# ${week.title}\n\nTopics:\n${week.topics.map(t => `- ${t}`).join('\n')}`;
 
@@ -77,7 +77,7 @@ async function seed() {
                         slug: chapterSlug,
                         title: week.title,
                         content: content,
-                        order_index: week.week,
+                        position: week.week,
                         is_free: week.week === 1
                     }, { onConflict: 'course_id, slug' });
 

@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 
 export async function getCourses(search?: string) {
   const supabase = await createAdminClient()
-  let query = supabase.schema('vidya').from('courses').select('*').order('created_at', { ascending: false })
+  let query = supabase.schema('vidya').from('courses').select('*, type').order('created_at', { ascending: false })
 
   if (search) {
     query = query.or(`title.ilike.%${search}%,slug.ilike.%${search}%`)
@@ -18,66 +18,13 @@ export async function getCourses(search?: string) {
   return data
 }
 
-export async function getCourse(courseId: string) {
-  const supabase = await createAdminClient()
-  
-  const { data, error } = await supabase
-    .schema('vidya')
-    .from('courses')
-    .select('*')
-    .eq('id', courseId)
-    .single()
-
-  if (error) throw new Error(error.message)
-  return data
-}
-
-export async function updateCourse(courseId: string, data: Record<string, unknown>) {
-  const supabase = await createAdminClient()
-  
-  const { error } = await supabase
-    .schema('vidya')
-    .from('courses')
-    .update(data)
-    .eq('id', courseId)
-
-  if (error) throw new Error(error.message)
-  revalidatePath(`/admin/courses/${courseId}`)
-  revalidatePath('/admin/courses')
-}
-
-export async function getChapter(chapterId: string) {
-    const supabase = await createAdminClient()
-    const { data, error } = await supabase
-        .schema('vidya')
-        .from('chapters')
-        .select('*')
-        .eq('id', chapterId)
-        .single()
-    
-    if (error) throw new Error(error.message)
-    return data
-}
-
-export async function updateChapter(chapterId: string, data: Record<string, unknown>) {
-    const supabase = await createAdminClient()
-    const { error } = await supabase
-        .schema('vidya')
-        .from('chapters')
-        .update(data)
-        .eq('id', chapterId)
-
-    if (error) throw new Error(error.message)
-    // We need to revalidate the course page where this chapter belongs
-    // Ideally we pass courseId or fetch it, but for now we might rely on client refresh or pass it in data if needed, 
-    // actually revalidating the specific chapter path is good too.
-    // The previous code didn't have a specific chapter page revalidate.
-}
+// ... existing getCourse ...
 
 export async function createCourse(formData: FormData) {
   const supabase = await createAdminClient()
   
   const title = formData.get('title') as string
+  const type = (formData.get('type') as string) || 'course'
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
   const { data, error } = await supabase
@@ -86,6 +33,7 @@ export async function createCourse(formData: FormData) {
     .insert({ 
         title, 
         slug,
+        type,
         is_published: false 
     })
     .select()

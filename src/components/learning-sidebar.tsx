@@ -7,7 +7,7 @@ import { ChevronLeft, CheckCircle2, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Course } from "@/lib/course-data";
+import { Course } from "@/types/course";
 
 // Helper to slugify topics for URL
 export const slugify = (text: string) => {

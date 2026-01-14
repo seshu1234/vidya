@@ -1,11 +1,19 @@
-"use client";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, BookOpen, CreditCard, TrendingUp } from "lucide-react";
 import { RevenueChart } from "@/components/charts/revenue-chart";
 import { CategoryDistributionChart } from "@/components/charts/category-distribution";
+import { getDBCourses } from "@/lib/course-service";
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+    const courses = await getDBCourses();
+
+    // Aggregate data for chart
+    const categoryCounts: Record<string, number> = {};
+    courses.forEach(course => {
+        categoryCounts[course.category] = (categoryCounts[course.category] || 0) + 1;
+    });
+    const chartData = Object.entries(categoryCounts).map(([name, value]) => ({ name, value }));
+
     return (
         <div className="space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -18,7 +26,7 @@ export default function AdminDashboardPage() {
             {/* Stats Overview */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <StatsCard title="Total Students" value="12,345" icon={Users} color="text-blue-500" change="+12% from last month" />
-                <StatsCard title="Total Courses" value="45" icon={BookOpen} color="text-orange-500" change="+2 new this week" />
+                <StatsCard title="Total Courses" value={courses.length.toString()} icon={BookOpen} color="text-orange-500" change="+2 new this week" />
                 <StatsCard title="Revenue" value="₹24.5L" icon={CreditCard} color="text-green-500" change="+8% increase" />
                 <StatsCard title="Active Learners" value="8,900" icon={TrendingUp} color="text-indigo-500" change="Currently online" />
             </div>
@@ -37,7 +45,7 @@ export default function AdminDashboardPage() {
                         <CardTitle>Course Distribution</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <CategoryDistributionChart />
+                        <CategoryDistributionChart data={chartData} />
                     </CardContent>
                  </Card>
              </div>

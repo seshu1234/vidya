@@ -4,13 +4,15 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, BookOpen, Settings, BarChart3, LogOut, Shield } from "lucide-react";
+import { LayoutDashboard, Users, BookOpen, Settings, BarChart3, LogOut, Shield, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const sidebarItems = [
     { name: "Overview", href: "/admin", icon: LayoutDashboard },
     { name: "Users", href: "/admin/users", icon: Users },
     { name: "Courses", href: "/admin/courses", icon: BookOpen },
+    { name: "Categories", href: "/admin/categories", icon: LayoutGrid },
+    { name: "Tools", href: "/admin/tools", icon: Settings },
     { name: "Analytics", href: "/admin/analytics", icon: BarChart3 },
     { name: "Settings", href: "/admin/settings", icon: Settings },
 ];

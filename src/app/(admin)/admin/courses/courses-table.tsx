@@ -33,6 +33,7 @@ type Course = {
     price: number;
     is_published: boolean;
     created_at: string;
+    type?: 'course' | 'tool';
 };
 
 export function CoursesTable() {
@@ -132,6 +133,17 @@ export function CoursesTable() {
                                             </Label>
                                             <Input id="title" name="title" className="col-span-3" required />
                                         </div>
+                                        <div className="grid grid-cols-4 items-center gap-4">
+                                            <Label htmlFor="type" className="text-right">
+                                            Type
+                                            </Label>
+                                            <div className="col-span-3">
+                                                 <select name="type" className="w-full p-2 border rounded-md bg-transparent">
+                                                     <option value="course">Standard Course</option>
+                                                     <option value="tool">Tool Guide (Hidden)</option>
+                                                 </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <DialogFooter>
                                         <Button type="submit" disabled={isPending}>
@@ -150,7 +162,7 @@ export function CoursesTable() {
                     <TableHeader>
                         <TableRow>
                             <TableHead>Title</TableHead>
-                            <TableHead>Uniq Slug</TableHead>
+                            <TableHead>Type</TableHead>
                             <TableHead>Status</TableHead>
                             <TableHead>Price</TableHead>
                             <TableHead>Created</TableHead>
@@ -171,8 +183,15 @@ export function CoursesTable() {
                                 <TableRow key={course.id}>
                                     <TableCell className="font-medium text-navy-900 dark:text-white">
                                         {course.title}
+                                        <div className="text-muted-foreground text-xs font-mono font-normal">{course.slug}</div>
                                     </TableCell>
-                                    <TableCell className="text-muted-foreground text-xs">{course.slug}</TableCell>
+                                    <TableCell>
+                                        {course.type === 'tool' ? (
+                                            <Badge variant="outline" className="bg-amber-50 text-amber-900 border-amber-200">Tool Guide</Badge>
+                                        ) : (
+                                            <Badge variant="outline" className="bg-blue-50 text-blue-900 border-blue-200">Course</Badge>
+                                        )}
+                                    </TableCell>
                                     <TableCell>
                                         <Badge variant={course.is_published ? "default" : "secondary"} className={course.is_published ? "bg-green-100 text-green-800 hover:bg-green-100" : ""}>
                                             {course.is_published ? "Published" : "Draft"}

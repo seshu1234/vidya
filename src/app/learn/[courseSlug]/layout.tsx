@@ -1,10 +1,9 @@
-import { getCourseBySlug } from "@/lib/course-data";
+import { getDBCourseBySlug } from "@/lib/course-service";
 import React from "react";
 import { LearningSidebar, LearningSidebarContent } from "@/components/learning-sidebar";
 import { Menu, FileText } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-
 
 import { CourseProgressProvider } from "@/components/course-progress-context";
 
@@ -16,7 +15,7 @@ export default async function LearningLayout({
     params: Promise<{ courseSlug: string }>;
 }) {
     const { courseSlug } = await params;
-    const course = getCourseBySlug(courseSlug);
+    const course = await getDBCourseBySlug(courseSlug);
 
     if (!course) {
         return <div>Course not found</div>;

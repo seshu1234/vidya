@@ -1,19 +1,17 @@
 "use client";
 
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip, Legend } from "recharts";
-import { courses } from "@/lib/course-data";
-
-// Aggregate data from real courses
-const categoryCounts: Record<string, number> = {};
-courses.forEach(course => {
-    categoryCounts[course.category] = (categoryCounts[course.category] || 0) + 1;
-});
-
-const data = Object.entries(categoryCounts).map(([name, value]) => ({ name, value }));
 
 const COLORS = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
 
-export function CategoryDistributionChart() {
+export function CategoryDistributionChart({ data }: { data: { name: string; value: number }[] }) {
+  if (!data || data.length === 0) {
+      return (
+          <div className="h-[350px] flex items-center justify-center text-muted-foreground italic">
+              No data available
+          </div>
+      );
+  }
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>
