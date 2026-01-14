@@ -1,11 +1,11 @@
-import { BookOpen, Code, Database, Globe, Layers, Layout, Server, Shield, Smartphone, Terminal, Cpu, Brain, Lock, BarChart, Link, Cog } from "lucide-react";
+import { Layers, Globe, Shield, Smartphone, Brain, BarChart, Link, Cog, LucideIcon } from "lucide-react";
 
 export interface Path {
     id: string;
     slug: string;
     title: string;
     description: string;
-    icon: any; 
+    icon: LucideIcon; 
     color: string;
     courses: number;
     duration: string;
